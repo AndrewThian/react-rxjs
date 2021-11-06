@@ -11,6 +11,7 @@ import {
 import { fromFetch } from "rxjs/fetch";
 import { BehaviorSubject } from "rxjs";
 import { useState, useEffect } from "react";
+import { last, split } from "lodash";
 
 const GENSHIN_API = "https://api.genshin.dev";
 
@@ -28,8 +29,13 @@ export const allGenshinCharacters$ = fromFetch(
   // merge the current stream with a secondary observable for fetching the image
   mergeMap((entityName) => {
     const info$ = fetchJSON(`${GENSHIN_API}/characters/${entityName}`);
-    const imgSrc = `${GENSHIN_API}/characters/${entityName}/gacha-card`;
+    const imgSrc = `${GENSHIN_API}/characters/${entityName}/icon`;
     return info$.pipe(map((resp) => ({ ...resp, img_src: imgSrc })));
+  }),
+  // use the last name of the character
+  map((character) => {
+    const name = last(split(character.name, " "));
+    return { ...character, name };
   }),
   toArray()
 );
@@ -46,8 +52,9 @@ export const filteredCharacters$ = allGenshinCharacters$.pipe(
   // take both emissions and filter
   map(([characters, searchInput]) => {
     return characters.filter((character) => {
-      const term = character.name.toLowerCase() + character.vision.toLowerCase()
-      return term.includes(searchInput.toLowerCase())
+      const term =
+        character.name.toLowerCase() + character.vision.toLowerCase();
+      return term.includes(searchInput.toLowerCase());
     });
   })
 );

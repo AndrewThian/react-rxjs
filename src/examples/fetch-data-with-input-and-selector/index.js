@@ -1,7 +1,6 @@
 import TextInput from "./TextInput";
 import {
   filteredCharacters$,
-  selectedGenshinCharacters$,
   selected$,
   useObserverable,
 } from "./store";

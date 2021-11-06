@@ -9,7 +9,7 @@ import {
   distinctUntilChanged,
 } from "rxjs/operators";
 import { fromFetch } from "rxjs/fetch";
-import { BehaviorSubject, of } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { useState, useEffect } from "react";
 import { last, split, uniqueId } from "lodash";
 

@@ -1,16 +1,13 @@
 import TextInput from "./TextInput";
-import {
-  filteredCharacters$,
-  useObserverable
-} from "./store";
+import { filteredCharacters$, useObserverable } from "./store";
 
 const Card = ({ imgSrc, name, vision }) => (
   <div>
+    <img width={106} height={106} src={imgSrc} alt="card" />
     <div className="card-info">
-      <p>Name: {name}</p>
-      <p>Vision: {vision}</p>
+      <p>{name}</p>
+      <p>{vision}</p>
     </div>
-    <img src={imgSrc} alt="card" />
   </div>
 );
 
@@ -20,7 +17,7 @@ const GenshinInfo = () => {
   return (
     <div>
       <TextInput />
-      <div className="genshin-cards">
+      <div className="genshin-cards-icons">
         {filteredCharacters.map(({ img_src, name, vision }) => (
           <Card
             key={`${vision}_${name}`}
