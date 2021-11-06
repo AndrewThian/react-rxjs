@@ -1,7 +1,7 @@
-import { useSelected } from "./GenshinProvider";
+import { useGenshin } from "./GenshinProvider";
 
 const GenshinCard = ({ imgSrc, name, vision, id, selected }) => {
-  const [,selected$] = useSelected();
+  const { selected$ } = useGenshin()
   
   const handleSelect = () => {
     if (selected$.value.includes(id)) {

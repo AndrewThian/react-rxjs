@@ -1,8 +1,10 @@
-import { useSearch } from "./GenshinProvider";
+import { useObserverable } from "../fetch-data-with-input-and-selector-refactor/store";
+import { useGenshin } from "./GenshinProvider";
 
 const SearchInput = () => {
-  const [search, search$] = useSearch()
-
+  const { search$ } = useGenshin()
+  const search = useObserverable(search$, '')
+  
   return (
     <div>
       <input
