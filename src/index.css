@@ -33,6 +33,10 @@ input {
   margin: 0;
 }
 
+.genshin-cards-icons img {
+  border-radius: 0.25rem;
+}
+
 .genshin-cards-icons .selected {
   border: 1px solid lightsalmon;
 }
