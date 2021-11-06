@@ -7,14 +7,19 @@ input {
   margin: 16px 0;
 }
 
-.genshin-cards {
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+
+  z-index: 1;
+}
+
+.genshin-cards,.genshin-cards-icons {
   display: flex;
   flex-flow: wrap;
 
   position: relative;
-
-  max-height: 600px;
-  overflow-y: scroll;
 }
 
 .genshin-cards .card-info {
@@ -29,10 +34,29 @@ input {
   padding: 0 1rem;
 }
 
-img {
+.genshin-cards img {
   object-fit: cover;
   height: 600px;
   width: 300px;
 
   border-radius: 10px;
+}
+
+.genshin-cards-icons > div {
+  padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 0.25rem;
+  margin: 0.125rem;
+}
+
+.genshin-cards-icons .card-info p {
+  margin: 0;
+}
+
+.genshin-cards-icons .selected {
+  border: 1px solid lightsalmon;
+}
+
+.genshin-cards-icons .unselected {
+  border: 1px solid white;
 }
