@@ -1,7 +1,7 @@
 import TextInput from "./TextInput";
 import GenshinCard from "./GenshinCard";
 import { useGenshin } from "./GenshinProvider";
-import { useObserverable } from "../fetch-data-with-input-and-selector-refactor/store";
+import { useObserverable } from "./store";
 
 const GenshinInfo = () => {
   const { filteredCharacters$ } = useGenshin();

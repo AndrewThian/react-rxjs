@@ -54,9 +54,8 @@ export const selectedGenshinCharacters$ = allGenshinCharacters$.pipe(
 
 export const filteredCharacters$ = selectedGenshinCharacters$.pipe(
   // combine stream with search observable
-  combineLatestWith(search$),
+  combineLatestWith(search$.pipe(debounceTime(200))),
   // debounce by 200ms
-  debounceTime(200),
   // check if the emission is changed
   distinctUntilChanged(),
   // take both emissions and filter

@@ -1,30 +1,46 @@
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import BasicCounter from "./examples/basic-counter";
-import BasicCounterWithInput from "./examples/basic-counter-with-input";
-import FetchDataWithInput from "./examples/fetch-data-with-input";
-import FetchDataWithInputAndSelector from "./examples/fetch-data-with-input-and-selector";
-import FetchDataInputSelectorRefactor from "./examples/fetch-data-with-input-and-selector-refactor";
-import { GenshinProvider } from "./examples/fetch-data-with-input-and-selector-refactor/GenshinProvider";
-import { registerRoute, getNavigation, getRoute} from './routes';
+import Presentation from "./Presentation";
+import BasicCounter from "./examples/01-basic-counter";
+import BasicCounterWithCrossComponent from "./examples/02-basic-counter-with-cross-component";
+import BasicCounterWithReactContext from "./examples/03-basic-counter-with-react-context";
+import RefactorLocalStateExercise from "./examples/04-refactor-local-state-exercise";
 
+import GenshinApp from "./notes/03-fetch-data-with-input-and-selector-refactor";
 
-registerRoute("/basic-counter", BasicCounter);
-registerRoute("/basic-counter-with-input", BasicCounterWithInput);
-registerRoute("/fetch-data-with-input", FetchDataWithInput);
-registerRoute("/fetch-data-input-selector", FetchDataWithInputAndSelector);
-registerRoute("/fetch-data-input-selector-2", FetchDataInputSelectorRefactor);
+import { registerRoute, getNavigation, getRoute } from "./routes";
+
+registerRoute("/basic-counter-redux", BasicCounter);
+registerRoute("/basic-counter-local", BasicCounter);
+registerRoute("/basic-counter-rxjs", BasicCounter);
+registerRoute(
+  "/basic-counter-with-cross-component-local",
+  BasicCounterWithCrossComponent
+);
+registerRoute(
+  "/basic-counter-with-cross-component-rxjs",
+  BasicCounterWithCrossComponent
+);
+registerRoute(
+  "/basic-counter-with-react-context-local",
+  BasicCounterWithReactContext
+);
+registerRoute(
+  "/basic-counter-with-react-context-rxjs",
+  BasicCounterWithReactContext
+);
+registerRoute("/local-state-refactoring-demo", RefactorLocalStateExercise);
+registerRoute("/solution", GenshinApp);
 
 const App = () => {
   return (
     <Router>
-      <GenshinProvider>
-        <div>
-          <nav className="header">
-            <ul>{getNavigation()}</ul>
-          </nav>
-          <Switch>{getRoute()}</Switch>
-        </div>
-      </GenshinProvider>
+      <Presentation />
+      <div className="examples">
+        <nav className="header">
+          <ul>{getNavigation()}</ul>
+        </nav>
+        <Switch>{getRoute()}</Switch>
+      </div>
     </Router>
   );
 };

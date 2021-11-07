@@ -1,6 +1,18 @@
+body {
+  margin: 0;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
+}
+
+.reveal {
+  height: 75vh !important;
+}
+
+.examples {
+  min-height: 75vh;
 }
 
 input {

@@ -1,4 +1,4 @@
-import { useObserverable } from "../fetch-data-with-input-and-selector-refactor/store";
+import { useObserverable } from "./store";
 import { useGenshin } from "./GenshinProvider";
 
 const SearchInput = () => {

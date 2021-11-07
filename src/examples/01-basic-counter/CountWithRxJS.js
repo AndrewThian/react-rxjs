@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const cookieCounter$ = new BehaviorSubject(0);
 
-const BasicCookieCounter = () => {
+const CountWithRxJS = () => {
   const [cookies, setCookies] = useState(0);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const BasicCookieCounter = () => {
 
   return (
     <div className="App">
-      <h1>Basic cookie counter</h1>
+      <h1>Basic cookie counter (rxjs)</h1>
       <p>number of cookies: {cookies}</p>
       <button
         onClick={() => {
@@ -23,8 +23,23 @@ const BasicCookieCounter = () => {
       >
         click to get cookie
       </button>
+      <button
+        onClick={() => {
+          if (cookies === 0) return;
+          cookieCounter$.next(cookies - 1);
+        }}
+      >
+        click to eat cookie
+      </button>
+      <button
+        onClick={() => {
+          cookieCounter$.next(0);
+        }}
+      >
+        reset
+      </button>
     </div>
   );
 };
 
-export default BasicCookieCounter;
+export default CountWithRxJS;

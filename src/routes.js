@@ -1,3 +1,4 @@
+import { first } from "lodash";
 import { Route, Link } from "react-router-dom";
 
 const routes = [];
@@ -20,7 +21,9 @@ export function getRoute() {
   return routes.map(([route, Component]) => {
     return (
       <Route path={route}>
-        <Component />
+        <div>
+          <Component />
+        </div>
       </Route>
     );
   });
